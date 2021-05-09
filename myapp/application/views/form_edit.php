@@ -1,28 +1,43 @@
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>Edit Artikel</h1>
-    <form method="POST">
-        <div>
-            <label>Jedul</label>
-            <input type="text" name="title" value='<?php echo $blog['title']; ?>'>
+<?php $this->load->view('partials/header'); ?>
+
+     <!-- Page Header-->
+     <header class="masthead" style="background-image: url('<?php echo base_url(); ?>tamplate/assets/img/post-bg.jpg')">
+            <div class="overlay"></div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-md-10 mx-auto">
+                        <div class="post-heading">
+                            <h1>Edit Artikel </h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md">
+
+                    <h1>Edit Artikel</h1>
+                    <form method="POST">
+                        <div class="form-group">
+                            <label>Judul</label>
+                            <input class= "form-control" type="text" name="title" value='<?php echo $blog['title']; ?>'>
+                        </div>
+                        <div class="form-group">
+                            <label>Konten</label>
+                            <textarea class= "form-control" name="content" id="" cols="30" rows="10">
+                                <?php echo $blog['content']; ?>
+                            </textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Url</label>
+                            <input class= "form-control" type="text" name = "url" value='<?php echo $blog['url']; ?>'>
+                        </div>    
+                            <button class="btn btn-primary" type="submit">Simpan Artikel</button> 
+                    </form>
+
+                 </div>
+            </div>
         </div>
-        <div>
-            <label>Konten</label>
-            <textarea name="content" id="" cols="30" rows="10">
-                <?php echo $blog['content']; ?>
-            </textarea>
-        </div>
-        <div>
-            <label>Url</label>
-            <input type="text" name = "url" value='<?php echo $blog['url']; ?>'>
-        </div>    
-            <button type="submit">Simpan Artikel</button> 
-    </form>
-</body>
-</html>
+
+<?php $this->load->view('partials/footer'); ?>

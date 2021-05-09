@@ -40,9 +40,12 @@ class Blog extends CI_Controller{
             
 
             $id = $this->Blog_model->insertBlog($data);
+            
 
-            if($id)
+            if($id){
                 echo "Data Berhasil Disimpan";
+                redirect('/');
+            }
             else
                 echo "Data Tidak Tersimpan";
         }
@@ -61,8 +64,10 @@ class Blog extends CI_Controller{
 
             $id = $this->Blog_model->updateBlog($id, $post);
 
-            if($id)
+            if($id){
                 echo "Data Berhasil Disimpan";
+                redirect('/');
+            }
             else
                 echo "Data Tidak Tersimpan";
         }
