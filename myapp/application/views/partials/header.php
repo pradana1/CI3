@@ -30,9 +30,23 @@
                         <li class="nav-item">
                             <a class="nav-link" href="<?php echo site_url();?>">Home</a>
                         </li>
+                        
+                        <!-- pengecekan session -->
+                        <?php if(isset($_SESSION['username'])): ?>
                         <li class="nav-item">
                             <a class="nav-link" a href="<?php echo site_url('blog/add/');?>">+ Tambah artikel</a>
                         </li>
+                        
+                        <li class="nav-item">
+                            <a class="nav-link" a href="<?php echo site_url('blog/logout/');?>">Logout</a>
+                        </li>
+
+                        <?php else: ?>
+                            <li class="nav-item">
+                            <a class="nav-link" a href="<?php echo site_url('blog/login/');?>">Login</a>
+                        </li>
+                        <?php endif; ?>
+
                         
                     </ul>
                 </div>

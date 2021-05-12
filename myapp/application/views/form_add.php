@@ -19,18 +19,32 @@
 
                 
                     <h1>Tambah Artikel</h1>
-                    <form method="POST">
+
+                    <div class="alert alert-warning">
+                    <?php echo validation_errors(); ?>
+                    </div>
+                    
+                    <?php echo form_open_multipart(); ?>
+                    
                         <div class="form-group">
-                            <label>Jedul</label>
-                            <input class= "form-control" type="text" name="title">
+                            <label>Judul</label>
+                            <?php echo form_input('title', set_value('title'), 'class= "form-control"') ?>
+        
                         </div>
                         <div class="form-group">
                             <label>Konten</label>
-                            <textarea class= "form-control" name="content" id="" cols="30" rows="10"></textarea>
+                            <?php echo form_textarea('content', set_value('content'), 'class= "form-control"');?>
+                            
                         </div>
                         <div class="form-group">
                             <label>Url</label>
-                            <input class= "form-control" type="text" name = "url">
+                            <?php echo form_input('url', set_value('url'), 'class= "form-control"') ?>
+                           
+                        </div>
+                        <div class="form-group">
+                            <label>Cover</label>
+                            <?php echo form_upload('cover', set_value('cover'), 'class= "form-control"') ?>
+                           
                         </div>    
                             <button class="btn btn-primary" type="submit">Simpan Artikel</button> 
                     </form>

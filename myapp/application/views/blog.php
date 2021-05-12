@@ -20,6 +20,9 @@
             <div class="row">
                 <div class="col-lg-8 col-md-10 mx-auto">
 
+                    <!-- Flashdata -->
+                    <?php echo $this->session->flashdata('message'); ?>
+
                     <!-- form PEncarian -->
                     <form>
                         <input type="text" name='find'>
@@ -38,9 +41,12 @@
                         </a>
                         <p class="post-meta">
                             Posted by on <?php echo $blog['date']; ?>
-                            <a href="<?php echo site_url('blog/edit/'.$blog['id']); ?>">Edit Artikel</a>
-                            <a href="<?php echo site_url('blog/delete/'.$blog['id']); ?>">Hapus Artikel</a>
 
+                            <!-- pengecekan session -->
+                            <?php if(isset($_SESSION['username'])): ?>
+                            <a href="<?php echo site_url('blog/edit/'.$blog['id']); ?>">Edit Artikel</a>
+                            <a href="<?php echo site_url('blog/delete/'.$blog['id']); ?>" onclick = "return confirm('Apakah kamu yakin ingin menghapus artikel ini? seriuss?')">Hapus Artikel</a>
+                            <?php endif; ?>
                         </p>
 
                         <?php echo $blog['content']; ?>
@@ -48,6 +54,9 @@
                     </div>
                     <hr>  
                     <?php endforeach; ?>
+                    
+                    <?php echo $this->pagination->create_links(); ?>
+
                 </div>
             </div>
         </div>

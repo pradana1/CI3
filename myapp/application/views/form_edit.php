@@ -1,7 +1,13 @@
 <?php $this->load->view('partials/header'); ?>
 
      <!-- Page Header-->
-     <header class="masthead" style="background-image: url('<?php echo base_url(); ?>tamplate/assets/img/post-bg.jpg')">
+        <?php
+        if(empty($blog['cover']))
+            $cover = base_url() . 'tamplate/assets/img/post-bg.jpg';
+        else
+            $cover = base_url() .'uploads/'. $blog['cover'];
+        ?>
+     <header class="masthead" style="background-image: url('<?php echo $cover; ?>')">
             <div class="overlay"></div>
             <div class="container">
                 <div class="row">
@@ -18,20 +24,30 @@
                 <div class="col-md">
 
                     <h1>Edit Artikel</h1>
-                    <form method="POST">
+                    <div class="alert alert-warning">
+                        <?php  echo validation_errors(); ?>
+                    </div>
+                    <?php echo form_open_multipart() ?>
                         <div class="form-group">
                             <label>Judul</label>
-                            <input class= "form-control" type="text" name="title" value='<?php echo $blog['title']; ?>'>
+                            <?php echo form_input('title', set_value('title', $blog['title']), 'class= "form-control"') ?>
+                            
                         </div>
                         <div class="form-group">
                             <label>Konten</label>
-                            <textarea class= "form-control" name="content" id="" cols="30" rows="10">
-                                <?php echo $blog['content']; ?>
+                            <?php echo form_textarea('content', set_value('content', $blog['content']), 'class= "form-control"') ?>
+                    
                             </textarea>
                         </div>
                         <div class="form-group">
                             <label>Url</label>
-                            <input class= "form-control" type="text" name = "url" value='<?php echo $blog['url']; ?>'>
+                            <?php echo form_input('url', set_value('url', $blog['url']), 'class= "form-control"') ?>
+                            
+                        </div>
+                        <div class="form-group">
+                            <label>Cover</label>
+                            <?php echo form_upload('cover', set_value('cover', $blog['cover']), 'class= "form-control"') ?>
+                            
                         </div>    
                             <button class="btn btn-primary" type="submit">Simpan Artikel</button> 
                     </form>
